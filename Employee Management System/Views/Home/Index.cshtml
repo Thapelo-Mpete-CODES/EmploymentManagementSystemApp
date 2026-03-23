@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Employee Management System</h1>
+    <p class="lead">Welcome! Use the links below to manage the system.</p>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4">
+            <a class="btn btn-primary w-100 mb-3" asp-controller="Employee" asp-action="Index">
+                📋 View Employees
+            </a>
+            <a class="btn btn-success w-100 mb-3" asp-controller="Employee" asp-action="Create">
+                ➕ Add Employee
+            </a>
+            <a class="btn btn-primary w-100 mb-3" asp-controller="Department" asp-action="Index">
+                🏢 View Departments
+            </a>
+            <a class="btn btn-success w-100" asp-controller="Department" asp-action="Create">
+                ➕ Add Department
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Employee_Management_System.Models.Employee>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h2>Employees</h2>
+
+<form method="get" class="form-inline mb-3">
+    <div class="form-group me-2">
+        <label class="me-2">Department</label>
+        <select name="departmentName" class="form-select">
+            <option value="">-- All --</option>
+            @foreach (var dept in (SelectList)ViewBag.Departments)
+            {
+                <option value="@dept.Value">@dept.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group me-2">
+        <label class="me-2">Minimum Age</label>
+        <input type="number" name="minAge" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Reset</a>
+</form>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Add New Employee</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Department</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Age</td>
+                <td>@item.Department?.Name</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
